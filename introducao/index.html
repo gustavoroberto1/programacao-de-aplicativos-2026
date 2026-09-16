@@ -1,57 +1,37 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-    <title>NOSSA PRIMEIRA PÁGINA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senai</title>
 
-    <style>
-        body {
-            background-color: blue;
-        }
-
-        img {
-            width: 100px;
-            height: 100px;
-            margin-top: 32px;
-            border-radius: 50%;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>PRIMEIRA PÁGINA</h1>
+    <div class="container">
+        <h1>Primeira Página</h1>
+        <div class="content">
+            <p>
+                Lorem ipsum, <i>dolor</i> sit amet consectetur adipisicing elit.
+                Adipisci hic consectetur <strong>sit</strong> aspernatur aliquid
+                alias recusandae repellat earum, voluptates atque facere tenetur
+                excepturi.Blanditiis illum voluptatem mollitia magni. Sit, suscipit.
+            </p>
 
-    <input type="text" id="nome" placeholder="Digite seu nome"><br />
-    <input type="password" placeholder="Digite sua senha"><br />
-    <input type="datetime-local"><br />
-    <input type="color" id="cor"/><br />
-    <input type="file" /><br />
-    <input type="radio"><br />
-    <input type="checkbox"><br />
-
-    <select name="" id="">
-        <option value="">JAVASCRIPT</option>
-        <option value="">HTML</option>
-        <option value="">CSS</option>
-    </select>
-    <br />
-    <br />
-
-
-    <button onclick="clicou()">ENTRAR</button><br />
-
-    <img id="perfil" class="img-perfil" src="https://github.com/gustavoroberto1.png" />
-
-    <script>
-        function clicou() {
-            var nome = document.getElementById("nome").value;
-            alert(nome);
-        }
-
-        var seletorCor = document.getElementById("cor");
-        seletorCor.addEventListener("input", function () {
-            document.body.style.backgroundColor = seletorCor.value;
-        })
-    </script>
+            <p>
+                Lorem ipsum, <i>dolor</i> sit amet consectetur adipisicing elit.
+                Adipisci hic consectetur <strong>sit</strong> aspernatur aliquid
+                alias recusandae repellat earum, voluptates atque facere tenetur
+                excepturi.Blanditiis illum voluptatem mollitia magni. Sit, suscipit.
+            </p>
+        </div>
+        <span>
+            CLIQUE
+            <a href="http://youtube.com" targe="blank">AQUI</a>
+        </span>
+    </div>
 </body>
 
 </html>
