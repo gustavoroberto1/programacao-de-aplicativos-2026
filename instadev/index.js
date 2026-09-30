@@ -18,39 +18,6 @@ var posts = [
                 username: "pedrinhdasilva",
                 text: "Bahhh que legal!!",
                 data: "2026-09-28T20:24:00"
-            },
-             {
-                id: 2,
-                username: "pedrinhdasilva",
-                text: "Muito Legal!!",
-                data: "2026-09-28T21:24:00"
-            }
-        ]
-    },
-    {
-        id: 2,
-        user: {
-            nickname: 'pedrinha',
-            local: 'Itapema - SC',
-            profileImg: 'https://github.com/Guustaavo.png'
-        },
-        image: 'https://github.com/Guustaavo.png',
-        legend: "Lorem ipsum dolor, sit amet consectetur adipisicing eli",
-        likes: 0,
-        isLike: false,
-        data: "2026-09-28T19:24:00",
-        comments: [
-            {
-                id: 1,
-                username: "pedrinhdasilva",
-                text: "Bahhh que legal!!",
-                data: "2026-09-28T20:24:00"
-            },
-             {
-                id: 2,
-                username: "pedrinhdasilva",
-                text: "Muito Legal!!",
-                data: "2026-09-28T21:24:00"
             }
         ]
     }
@@ -58,13 +25,34 @@ var posts = [
 
 // FUNÇÕES JS
 const feed = document.getElementById("feed");
-console.log(feed)
+const botaoAbrir = document.getElementById("botaoAbrirModal");
+const botaoFechar = document.getElementById("botaoFecharModal");
+const modal = document.getElementById("modalPost");
+
+botaoAbrir.addEventListener("click", () => {
+    modal.classList.remove("hidden")
+})
+
+botaoFechar.addEventListener("click", () => {
+    modal.classList.add("hidden");
+})
+
 
 function renderPosts() {
     feed.innerHTML = "";
 
-    for(var i = 0; i < posts.length; i++) {
+    for (var i = 0; i < posts.length; i++) {
         var article = document.createElement("article");
+
+        var commentsHTML = "";
+        for (var comment of posts[i].comments) {
+            commentsHTML += `
+                <p class="comment">
+                    <strong>${comment.username}</strong>
+                    ${comment.text}
+                </p>
+            `;
+        }
 
         article.innerHTML = `
             <header class="post-header">
@@ -98,10 +86,7 @@ function renderPosts() {
 
                     <a href="#">Ver todos os 7 comentários</a>
 
-                    <p class="comment">
-                        <strong>mariaaaaa</strong>
-                        Blalbalbablba blablbalba balblaba.
-                    </p>
+                    ${commentsHTML}
 
                     <span class="post-date">Há 2 horas</span>
                 </div>
@@ -113,4 +98,3 @@ function renderPosts() {
 }
 
 renderPosts();
- 

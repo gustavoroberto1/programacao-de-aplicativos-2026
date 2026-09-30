@@ -40,7 +40,7 @@
                 Notificações
             </a>
 
-            <a href="#" class="menu-item">
+            <a href="#" class="menu-item" id="botaoAbrirModal">
                 <span>＋</span>
                 Criar
             </a>
@@ -68,9 +68,7 @@
         </section>
 
         <section class="feed" id="feed">
-           
         </section>
-
     </main>
 
     <aside class="suggestions">
@@ -130,6 +128,25 @@
         </div>
 
     </aside>
+
+    <div class="modal hidden" id="modalPost">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nova publicação</h2>
+                <button id="botaoFecharModal">X</button>
+            </div>
+
+            <div class="modal-body">
+                <label for="imgPost">URL da imagem</label>
+                <input type="text" id="imgPost" placeholder="https://..." />
+
+                <label for="legendPost">Legenda</label>
+                <textarea id="legendPost" placeholder="Digite a legenda..."></textarea>
+
+                <button class="botaoPublicar" id="botaoPublicar">Publicar</button>
+            </div>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>

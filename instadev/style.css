@@ -216,7 +216,7 @@ button {
     right: 275px;
 }
 
-.user, 
+.user,
 .suggestion {
     display: flex;
     flex-direction: row;
@@ -250,7 +250,7 @@ button {
 .suggestion a {
     color: #0095f6;
     font-size: 12px;
-    font-weight: bold; 
+    font-weight: bold;
     margin-left: 45px;
 }
 
@@ -267,4 +267,82 @@ button {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+}
+
+/*--------------------------*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 100;
+}
+
+.modal-content {
+    width: 450px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.modal-header h2 {
+    font-size: 17px;
+}
+
+.modal-header button {
+    font-size: 18px;
+    background-color: transparent;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.modal-body label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.modal-body input,
+.modal-body textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    outline: none;
+}
+
+.modal-body textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.botaoPublicar {
+    width: 100%;
+    background-color: #0095fd;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
 }
