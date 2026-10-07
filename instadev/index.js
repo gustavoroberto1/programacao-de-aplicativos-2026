@@ -1,4 +1,4 @@
-// BD
+// FAKE BD
 var posts = [
     {
         id: 1,
@@ -27,6 +27,9 @@ var posts = [
 const feed = document.getElementById("feed");
 const botaoAbrir = document.getElementById("botaoAbrirModal");
 const botaoFechar = document.getElementById("botaoFecharModal");
+const botaoPublicar = document.getElementById("botaoPublicar");
+const botaoLike = document.getElementById("")
+
 const modal = document.getElementById("modalPost");
 
 botaoAbrir.addEventListener("click", () => {
@@ -37,6 +40,56 @@ botaoFechar.addEventListener("click", () => {
     modal.classList.add("hidden");
 })
 
+botaoPublicar.addEventListener("click", () => {
+    // PEGAR INFORMAÇÕES QUE USUÁRIO DIGITOU
+    var urlImagem = document.getElementById("imgPost").value;
+    var legenda = document.getElementById("legendPost").value;
+
+    // CRIAR A ESTRUTURA DE POST
+    var novoPost = {
+        id: posts[posts.length - 1].id + 1,
+        user: {
+            nickname: 'gustavoroberto1', // ISSO VIRIA DA SESSÃO
+            local: 'Tijucas - SC', /// ISSO TAMBÉM VIRIA DA SESSÃO
+            profileImg: 'https://github.com/gustavoroberto1.png' // ISSO TAMBÉM
+        },
+        image: urlImagem,
+        legend: legenda,
+        likes: 0,
+        isLike: false,
+        data: new Date().toISOString(),
+        comments: []
+    }
+
+    // ADICIONANDO A LISTAGEM DE POSTS
+    posts.push(novoPost); // ENVIO PARA SERVIDOR
+
+    //RE-RENDERIZAR A TELA
+    renderPosts();
+
+    // FECHAR MODAL
+    modal.classList.add("hidden");
+
+    //LIMPAR CAMPOS MODAL
+    document.getElementById("imgPost").value = "";
+    document.getElementById("legendPost").value = "";
+})
+
+function curtirPost(idPost) {
+    var index = posts.findIndex(post => idPost === post.id);
+    posts[index].isLike = !posts[index].isLike;
+    posts[index].likes = posts[index].likes + 1;
+    renderPosts();
+
+    // for (var i = 0; i < posts.length; i++) {
+    //     if (idPost === posts[i].id) {
+    //         posts[i].isLike = !posts[i].isLike;
+    //         posts[i].likes = posts[i].isLike === true ? posts[i].likes + 1 : posts[i].likes;
+    //         renderPosts();
+    //         return;
+    //     }
+    // }
+}
 
 function renderPosts() {
     feed.innerHTML = "";
@@ -70,7 +123,10 @@ function renderPosts() {
                 <img class="post-image" src="${posts[i].image}">
                 <div class="post-actions">
                     <div>
-                        <button>♡</button>
+                        <button 
+                            class="${posts[i].isLike === true ? 'liked' : ''}"  
+                            onclick="curtirPost(${posts[i].id})"
+                        >♡</button>
                         <button>○</button>
                         <button>➤</button>
                     </div>
