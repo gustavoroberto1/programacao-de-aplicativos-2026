@@ -10,11 +10,26 @@ const jogos = [
 ];
 
 const gradeJogos = document.querySelector("#grade-jogos");
+const botoes = document.querySelectorAll('[data-categoria]');
+const busca = document.querySelector("#busca");
+const modal = document.getElementById("modalPost");
+const botaoAbrir = document.getElementById("botaoAbrirModal");
+const botaoFechar = document.querySelector("#botaoFecharModal");
+const botaoPublicar = document.getElementById("botaoAdicionar");
+
+let categoriaSelecionada = "Todos";
+
 
 function mostrarJogos() {
     gradeJogos.innerHTML = "";
 
     jogos.forEach(jogo => {
+        const nomeCombina = jogo.nome.toLowerCase().includes(busca.value.toLowerCase())
+        const categoriaCombina = categoriaSelecionada === "Todos" || categoriaSelecionada === jogo.categoria;
+        if (!categoriaCombina || !nomeCombina) {
+            return;
+        }
+
         gradeJogos.innerHTML += `
             <article class="card">
                 <div class="capa" style="background: ${jogo.cor}">${jogo.emoji}</div>
@@ -27,5 +42,60 @@ function mostrarJogos() {
         `;
     })
 }
+
+busca.addEventListener("input", mostrarJogos)
+
+botoes.forEach(botao => {
+    botao.addEventListener('click', () => {
+        categoriaSelecionada = botao.dataset.categoria;
+        botoes.forEach(item => item.classList.remove('ativo'))
+        botao.classList.add("ativo");
+        mostrarJogos();
+    })
+})
+
+botaoAbrir.addEventListener("click", () => {
+    modal.classList.remove("hidden")
+})
+
+botaoFechar.addEventListener("click", () => {
+    modal.classList.add("hidden");
+})
+
+botaoPublicar.addEventListener("click", () => {
+    // PEGAR INFORMAÇÕES QUE USUÁRIO DIGITOU
+    var nome = document.getElementById("nome").value;
+    var categoria = document.getElementById("categoria").value;
+    var descricao = document.getElementById("descricao").value;
+    var emoji = document.getElementById("emoji").value;
+    var cor = document.getElementById("cor").value;
+
+    // CRIAR A ESTRUTURA DE POST
+    var novoJogo = {
+        nome,
+        categoria,
+        descricao,
+        emoji,
+        cor,
+    }
+
+
+    // ADICIONANDO A LISTAGEM DE POSTS
+    jogos.push(novoJogo); // ENVIO PARA SERVIDOR
+
+    //RE-RENDERIZAR A TELA
+    mostrarJogos();
+
+    // FECHAR MODAL
+    modal.classList.add("hidden");
+
+    //LIMPAR CAMPOS MODAL
+    document.getElementById("nome").value = "";
+    document.getElementById("categoria").value = "";
+    document.getElementById("descricao").value = "";
+    document.getElementById("emoji").value = "";
+    document.getElementById("cor").value = "";
+})
+
 
 mostrarJogos();
