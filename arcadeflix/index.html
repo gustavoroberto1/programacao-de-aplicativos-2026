@@ -13,7 +13,10 @@
 <body>
     <header>
         <h1>🎮 Arcade<span>Flix</span></h1>
-        <a href="#catalogo">Jogos</a>
+        <div>
+            <a href="#catalogo">Jogos</a>
+            <button id="botaoAbrirModal">Cadastrar</a>
+        </div>
     </header>
 
     <main>
@@ -43,7 +46,33 @@
         </section>
     </main>
 
+    <div class="modal" id="modalPost">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nova Jogo</h2>
+                <button id="botaoFecharModal">X</button>
+            </div>
 
+            <div class="modal-body">
+                <label for="imgPost">Nome do Jogo</label>
+                <input type="text" id="nome" placeholder="Mine..." />
+
+                <label for="imgPost">Categoria</label>
+                <input type="text" id="categoria" placeholder="Aventura..." />
+
+                <label for="imgPost">Descrição</label>
+                <input type="text" id="descricao" placeholder="Jogo de aventura..." />
+
+                <label for="imgPost">Emoji</label>
+                <input type="text" id="emoji" placeholder="⛏️..." />
+
+                <label for="imgPost">Cor</label>
+                <input type="color" id="cor" placeholder="#000..." />
+
+                <button class="botaoPublicar" id="botaoAdicionar">ADICIONAR JOGO</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
