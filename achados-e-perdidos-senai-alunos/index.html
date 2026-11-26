@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Achados e Perdidos do SENAI</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="largura">
+            <p class="instituicao">SENAI</p>
+            <h1>Achados e Perdidos</h1>
+        </div>
+    </header>
+    <main class="largura">
+        <section class="painel" aria-labelledby="titulo-cadastro">
+            <h2 id="titulo-cadastro">Cadastrar objeto</h2>
+            <div class="campos">
+                <div class="campo">
+                    <label for="nome">Nome do objeto</label>
+                    <input id="nome" type="text" placeholder="Ex.: Garrafa azul">
+                </div>
+
+                <div class="campo">
+                    <label for="local">Onde foi encontrado?</label>
+                    <input id="local" type="text" placeholder="Ex.: Laboratório 2">
+                </div>
+
+                <div class="campo">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria">
+                        <option value="">Selecione uma categoria</option>
+                        <option value="Acessórios">Acessórios</option>
+                        <option value="Material escolar">Material escolar</option>
+                        <option value="Eletrônicos">Eletrônicos</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="data">Data em que foi encontrado</label>
+                    <input id="data" type="date">
+                </div>
+
+                <div class="campo campo-inteiro">
+                    <label for="descricao">Descrição (opcional)</label>
+                    <textarea id="descricao" rows="3" placeholder="Ex.: Tem um adesivo na tampa"></textarea>
+                </div>
+
+            </div>
+            <button type="button" onclick="cadastrarObjeto()">Cadastrar</button>
+            <p id="mensagem" role="status"></p>
+        </section>
+
+        <section class="resultados" aria-labelledby="titulo-lista">
+            <h2 id="titulo-lista">Objetos encontrados</h2>
+            <ul id="lista-objetos"></ul>
+        </section>
+    </main>
+</body>
+</html>
